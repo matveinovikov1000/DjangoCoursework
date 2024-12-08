@@ -1,0 +1,27 @@
+{% extends 'mailings/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row text-center">
+            <a class="p-2 btn btn-outline-primary" href="{% url 'mailings:newsletter_create' %}">Создать</a>
+            {% for newsletter in object_list %}
+            <div class="col-3">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Рассылка сообщения: {{ newsletter.massage }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                            <li>Статус рассылки: {{ newsletter.status }}</li>
+                        </ul>
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'mailings:newsletter' newsletter.pk %}">Посмотреть</a>
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'mailings:newsletter_update' newsletter.pk %}">Редактировать</a>
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'mailings:newsletter_delete' newsletter.pk %}">Удалить</a>
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'mailings:send_message' newsletter.pk %}">Отправить</a>
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'mailings:send_message' block_mailing.pk %}">Отключить рассылку</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

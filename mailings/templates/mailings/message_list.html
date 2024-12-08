@@ -1,0 +1,22 @@
+{% extends 'mailings/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row text-center">
+            <a class="p-2 btn btn-outline-primary" href="{% url 'mailings:message_create' %}">Создать</a>
+            {% for message in object_list %}
+            <div class="col-3">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Тема письма: {{ message.letter_header }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'mailings:message' message.pk %}">Посмотреть</a>
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'mailings:message_update' message.pk %}">Редактировать</a>
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'mailings:message_delete' message.pk %}">Удалить</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

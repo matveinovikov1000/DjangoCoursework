@@ -1,0 +1,10 @@
+{% extends 'mailings/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row text-center">
+            <h1>Количество рассылок: {{ len_newsletter }}</h1>
+            <h1>Количество активных рассылок: {{ len_launched_newsletter }}</h1>
+            <h1>Количество получателей: {{ len_recipients }}</h1>
+        </div>
+    </div>
+{% endblock %}
